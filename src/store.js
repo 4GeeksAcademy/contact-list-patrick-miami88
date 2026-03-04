@@ -4,15 +4,21 @@ export const initialStore=()=>{
     todos: [
       {
         id: 1,
-        title: "Make the bed",
+        title: "Sleep",
         background: null,
       },
       {
         id: 2,
         title: "Do my homework",
         background: null,
-      }
-    ]
+      },
+      {
+        id: 3,
+        title: "Eat pizza",
+        background: null,
+      },
+    ], 
+    contacts: []
   }
 }
 
@@ -26,6 +32,12 @@ export default function storeReducer(store, action = {}) {
         ...store,
         todos: store.todos.map((todo) => (todo.id === id ? { ...todo, background: color } : todo))
       };
+      case 'store_get_contacts':
+        return {
+          ...store,
+          contacts: action.payload 
+        }
+
     default:
       throw Error('Unknown action.');
   }    
